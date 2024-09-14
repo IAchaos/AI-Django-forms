@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'feedback.apps.FeedbackConfig',
+    'College_Admission_Form.apps.CollegeAdmissionFormConfig',
     'bootstrap5'
 ]
 
