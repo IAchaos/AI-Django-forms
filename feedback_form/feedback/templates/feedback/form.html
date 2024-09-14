@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Feedback Survey</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style>
+        .container{
+            margin-top: 50px; 
+        }
+    </style>
+</head>
+<body class="container">
+    <head>
+        <h1>Customer Feedback Survey</h1>
+        <p>Please let us know about your experience with our product and service.</p>
+    </head>
+    <hr>
+    <main >
+        <form action='{% url "feedback:home" %}' method='POST' >
+            {% csrf_token %}
+            <div class='form-info'>
+                <p>
+                    Is this the first time you are using our Products and services? 
+                </p>
+                <p>
+                    {{ form.first_use}}
+                </p>
+            </div>
+            <div class='form-info'>
+                <p>
+                    Would you recommend it to your friends and colleagues? 
+                </p>
+                <p>
+                    {{ form.ppl_recomd}}
+                </p>
+            </div>
+            <div class='form-info'>
+                <p>
+                    Do you have any suggestions to improve our product and service? 
+                </p>
+                <p>
+                    {{ form.suggestions}}
+                </p>
+            </div>
+            <div class='form-info'>
+                <p>
+                    How satisfied are you with our company overall? 
+                </p>
+                <p>
+                   {{form.satisfaction}} 
+                </p>
+            </div>
+            <div>
+                Please leave your email address if you would like us to contact you regarding any questions.
+                <div class='infos'>
+                    <p>
+                        {{ form.name}}
+                    </p>
+                    <p> {{form.email}} </p>
+                </div>
+            </div>
+            <input type="submit" value="submit">
+        </form>
+    </main>
+</body>
+</html>
