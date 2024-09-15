@@ -30,5 +30,22 @@ class CollegeAdmission(models.Model):
     province = models.CharField(max_length=255)
     postal = models.CharField(max_length=10)
     
+    # CONTACT EMERGENCY
+    emrg_fname= models.CharField(max_length=255, default='')
+    emrg_lname = models.CharField(max_length=255, default='')
+    relationship = models.CharField(max_length=100 , default='')
+    emrg_email = models.EmailField(default='')
+    emrg_phone = PhoneNumberField(help_text='Enter your emergancy number')
+    
+    # SPEAKING LANGAUGES
+    class Answer(models.TextChoices):
+        YES = 'Y' , 'Yes'
+        NO = 'N', 'No'
+        
+    english = models.CharField(max_length=1, choices=Answer.choices, default=Answer.NO)
+    list_lang= models.TextField(max_length=500, blank=True)
+    
+    
+    
     
     

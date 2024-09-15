@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('customer-survey', include('feedback.urls', namespace='feedback') ),
+    path('customer-survey/', include('feedback.urls', namespace='feedback') ),
+    
 ]
