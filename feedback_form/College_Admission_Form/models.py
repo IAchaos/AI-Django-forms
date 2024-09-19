@@ -1,6 +1,6 @@
 from django.db import models
 from django_countries.fields import CountryField
-from phonenumber_field.formfields import PhoneNumberField
+from phonenumber_field.modelfields import PhoneNumberField
 
 # College Admission Form
 class CollegeAdmission(models.Model):
@@ -21,7 +21,7 @@ class CollegeAdmission(models.Model):
     # COUNTRY
     country = CountryField(blank_label='(Select Country)')
     # PHONE & EMAIL 
-    phone = PhoneNumberField(help_text="Enter phone number with country code")
+    phone = PhoneNumberField(help_text="Enter phone number with country code",default='')
     email = models.EmailField()
     
     # MAILING ADDRESS
@@ -35,7 +35,7 @@ class CollegeAdmission(models.Model):
     emrg_lname = models.CharField(max_length=255, default='')
     relationship = models.CharField(max_length=100 , default='')
     emrg_email = models.EmailField(default='')
-    emrg_phone = PhoneNumberField(help_text='Enter your emergancy number')
+    emrg_phone = PhoneNumberField(help_text='Enter your emergancy number',default='')
     
     # SPEAKING LANGAUGES
     class Answer(models.TextChoices):

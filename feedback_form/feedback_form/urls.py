@@ -20,5 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('customer-survey/', include('feedback.urls', namespace='feedback') ),
-    
+    path('college-admission/', include('College_Admission_Form.urls', namespace='college-admission'))
 ]
