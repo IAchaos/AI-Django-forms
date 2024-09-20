@@ -9,7 +9,148 @@
     {%  bootstrap_javascript %}
 </head>
 <body>
+    <head>
+        <div class="container">
+            <h1>College Admissions Form</h1>
+            <p>Enter your admission information below.</p>
+            <hr>
+        </div>
+    </head>
+    <main>
+        <div class="container">
+            <form action="#" method='POST'>
+                {% csrf_token %}
+                <div class="mb-3">
+                    <h4>Name</h4>
+                    <div class="input-group">
+                       <p class="form-control"> {{form.fname}} </p>
+                       <p class="form-control"> {{form.iname}} </p>
+                       <p class="form-control"> {{form.lname}} </p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <h4>Birth Date</h4>
+                    <div class="input-group">
+                        {{form.dob}}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <h4>Gender</h4>
+                            <div class="form-check">
+                                {% for radio in form.gender %}
+                                    <div class="form-check-inline">
+                                        <!-- Render the input (radio button) -->
+                                        {{ radio.tag }}
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <!-- Render the label separately -->
+                                        <label>{{ radio.choice_label }}</label>
+                                    </div>
+                                {% endfor %}
+                            </div> 
+                        </div>
+                        <div class="col">
+                            <h4> Of which country are you a citizen? </h4>
+                            <div class="input-group">
+                                {{ form.country}}
+                            </div>
+                        </div>
+                    </div>
+                     
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <h4>Phone</h4>
+                            <div class="group">
+                                {{form.phone}}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h4>Email</h4>
+                            <div class="input-group">
+                                {{form.email}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <h4>Mailing Address</h4>
+                    <div>
+                        {{form.street_address}} 
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                {{ form.city}}
+                            </div>
+                            <div class="col">
+                                {{form.province}}
+                            </div>
+                        </div>
+                        <br>
+                        {{ form.postal}}
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="row">
+                        <h4>Emergency Contact</h4>
+                        <div class="col">
+                            {{ form.emrg_fname}}
+                        </div>
+                        <div class="col">
+                            {{ form.emrg_lname}}
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <h4>Relationship</h4>
+                        <div class="col">
+                            {{ form.relationship}}
+                        </div>
+                    </div>
+                    
+                </div> 
+                
+                <br>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col">
+                            <h4>Emergency Email</h4>
+                            <div class="input-group">
+                                {{form.emrg_email}}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h4>Emergency Phone</h4>
+                            <div class="input-group">
+                                {{form.emrg_phone}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="mb-3">
+                    <h4>Do you speak any languages other than English?</h4>
+                    <div class="form-check form-check-inline">
+                        {% for radio in form.english %}
+                            <div class="form-check form-check-inline">
+                                <!-- Radio input -->
+                                {{ radio.tag }}
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <!-- Label for the radio input -->
+                                <label class="form-check-label">{{ radio.choice_label }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </main>
     
-    
+
 </body>
 </html>
