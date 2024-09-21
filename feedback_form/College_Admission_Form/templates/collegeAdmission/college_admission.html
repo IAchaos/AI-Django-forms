@@ -93,24 +93,28 @@
                         {{ form.postal}}
                     </div>
                 </div>
-                <div class="input-group">
+                <div class="mb-3">
                     <div class="row">
-                        <h4>Emergency Contact</h4>
                         <div class="col">
-                            {{ form.emrg_fname}}
+                            <div class="row">
+                                <h4>Emergency Contact</h4>
+                                <div class="col">
+                                    {{ form.emrg_fname}}
+                                </div>
+                                <div class="col">
+                                    {{ form.emrg_lname}}
+                                </div>
+                            </div>
                         </div>
                         <div class="col">
-                            {{ form.emrg_lname}}
+                            <div class="row">
+                                <h4>Relationship</h4>
+                                <div class="col">
+                                    {{ form.relationship}}
+                                </div>
+                            </div>
                         </div>
-                        
                     </div>
-                    <div class="row">
-                        <h4>Relationship</h4>
-                        <div class="col">
-                            {{ form.relationship}}
-                        </div>
-                    </div>
-                    
                 </div> 
                 
                 <br>
@@ -132,25 +136,75 @@
                     
                 </div>
                 <div class="mb-3">
-                    <h4>Do you speak any languages other than English?</h4>
-                    <div class="form-check form-check-inline">
-                        {% for radio in form.english %}
+                    <div class="row">
+                        <div class="col">
+                            <h4>Do you speak any languages other than English?</h4>
                             <div class="form-check form-check-inline">
-                                <!-- Radio input -->
-                                {{ radio.tag }}
+                                {% for radio in form.english %}
+                                    <div class="form-check form-check-inline">
+                                        <!-- Radio input -->
+                                            {{ radio.tag }}
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <!-- Label for the radio input -->
+                                        <label class="form-check-label">{{ radio.choice_label }}</label>
+                                    </div>
+                                {% endfor %}
                             </div>
-                            <div class="form-check form-check-inline">
-                                <!-- Label for the radio input -->
-                                <label class="form-check-label">{{ radio.choice_label }}</label>
+                        </div>
+                        <div class="col" id="language-textarea" style="display: none;">
+                            <h4>List of Languages</h4>
+                            <div class="input-group">
+                                {{ form.list_lang }}
                             </div>
-                        {% endfor %}
+                        </div>
                     </div>
+                    
                 </div>
                 
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
             </form>
         </div>
     </main>
     
+    <script>
+        function toggleLanguageTextarea(radio) {
+            // Get the textarea element
+            const textareaDiv = document.getElementById('language-textarea');
+    
+            // Check if the 'Yes' radio button is selected
+            if (radio.value === 'Y') {  // Assuming 'Yes' is value 'Y'
+                textareaDiv.style.display = 'block';  // Show the textarea
+            } else {
+                textareaDiv.style.display = 'none';  // Hide the textarea
+            }
+        }
+    
+        // Automatically run the function on page load to ensure proper state
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectedRadio = document.querySelector('input[name="{{ form.english.name }}"]:checked');
+            if (selectedRadio) {
+                toggleLanguageTextarea(selectedRadio);
+            }
+    
+            // Attach event listeners to all radio buttons
+            const radioButtons = document.querySelectorAll('input[name="{{ form.english.name }}"]');
+            radioButtons.forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                    toggleLanguageTextarea(this);
+                });
+            });
+        });
+    </script>
 
-</body>
+    <footer>
+        <div class="container">
+            <hr>
+            <p>&copy; 2024 College Admissions Form || By IA.Chaos </p>
+        </div>
+    </footer>
+
+</body> 
 </html>

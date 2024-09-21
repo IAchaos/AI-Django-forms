@@ -31,7 +31,7 @@ class CollegeAdmissionForm(forms.ModelForm):
                 empty_label='None' 
             ),
            
-           'gender': forms.RadioSelect(attrs={'class':'form-control'}),
+           'gender': forms.RadioSelect(),
            'country': forms.Select(attrs={'class':'form-control'}),
            
            'phone': forms.NumberInput(attrs={'class': 'form-control',
@@ -77,7 +77,8 @@ class CollegeAdmissionForm(forms.ModelForm):
            'relationship': forms.TextInput(attrs={'placeholder':'Who is applying this emergency',
                                                  'class': 'form-control'}),
            
-            'english': forms.RadioSelect(attrs={'class':'form-control'}),
+            'english': forms.RadioSelect(),
+            'list_lang': forms.Textarea(attrs={'class:': 'form-control'})
 
         }
         
