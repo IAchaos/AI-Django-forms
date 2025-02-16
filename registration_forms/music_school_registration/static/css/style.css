@@ -1,0 +1,278 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* CSS Variables */
+:root {
+  --primary-color: #74b9ff;
+  --secondary-color: #2d3436;
+  --text-color: #636e72;
+  --error-color: #e74c3c;
+  --border-color: #dfe6e9;
+  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --border-radius: 20px;
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  padding: 2rem;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Container Styles */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Header Section */
+.container:first-child {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  gap: 2rem;
+}
+
+.image {
+  flex: 1;
+  max-width: 50%;
+  overflow: hidden;
+}
+
+.image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  transition: var(--transition);
+}
+
+.image img:hover {
+  transform: scale(1.05);
+}
+
+.title {
+  flex: 1;
+  padding: 3rem;
+}
+
+.title h1 {
+  font-size: 2.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  position: relative;
+}
+
+.title h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--primary-color);
+  margin-top: 1rem;
+}
+
+.title p {
+  color: var(--text-color);
+  font-size: 1.1rem;
+}
+
+/* Form Styles */
+form {
+  padding: 2rem;
+}
+
+.grp-info {
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.grp-info h4 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.grp-input {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Form Input Styles */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: var(--transition);
+  background-color: #fff;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--primary-color);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(116, 185, 255, 0.2);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Custom Checkbox and Radio Styles */
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+/* Submit Button */
+.form-actions {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+button[type="submit"] {
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+button[type="submit"]:hover {
+  background: #0984e3;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(9, 132, 227, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .container:first-child {
+    flex-direction: column;
+  }
+
+  .image {
+    max-width: 100%;
+  }
+
+  .image img {
+    height: 300px;
+  }
+
+  .title {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .title h1::after {
+    margin: 1rem auto 0;
+  }
+
+  .grp-input {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    padding: 1rem;
+  }
+
+  .container {
+    margin: 1rem auto;
+  }
+
+  .title h1 {
+    font-size: 1.5rem;
+  }
+
+  form {
+    padding: 1rem;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0984e3;
+}
