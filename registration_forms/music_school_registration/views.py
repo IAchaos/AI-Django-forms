@@ -9,9 +9,9 @@ def registration(request):
     if request.method == 'POST':
         print("POST data:", request.POST) 
         form = RegistationForm(request.POST)
-        if form.is_valid():
+        if form.is_valid(): # the error starts from this line
             
-            student = form.save()
+            form.save()
             return redirect('music-school-registration:registration_form')
     else:
         form = RegistationForm()
